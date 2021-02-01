@@ -16,7 +16,7 @@ body {
 .calculadora {
   width: max(40vw, 320px);
   background-color: rgb(208, 109, 130);
-  
+
   padding: 30px 30px 40px;
 }
 
@@ -29,19 +29,17 @@ body {
   border: none;
   color: #fff;
 
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 .display {
   width: 100%;
-  background-color: #000  ;
+  background-color: #000;
   height: 100px;
-
 
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
 }
 
 .digit {
@@ -79,7 +77,7 @@ body {
   font-size: 2rem;
   color: #fff;
 
-  transition: all .5s;
+  transition: all 0.5s;
 
   cursor: pointer;
 }
@@ -87,6 +85,10 @@ body {
 .digit-number:hover {
   background-color: rgb(103, 55, 63);
   border: none;
+}
+
+.row .digit-number.click {
+  animation: click 0.3s;
 }
 
 div.conta {
@@ -98,29 +100,23 @@ div.conta {
   grid-column: 3 / 5;
 }
 
-
-
 /* MENU DOS TEMAS */
 
 .hamburguer {
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 20px;
 
   height: 30px;
   width: 50px;
-  
 
   cursor: pointer;
   z-index: 10;
-
 }
-
-
 
 [data-hamb] {
   position: absolute;
-  transition: all .4s;
+  transition: all 0.4s;
 
   width: 100%;
   height: 4px;
@@ -128,14 +124,13 @@ div.conta {
   position: relative;
 }
 
-[data-hamb="2"]{
+[data-hamb="2"] {
   top: 8px;
 }
 
 [data-hamb="3"] {
   top: 16px;
 }
-
 
 [data-hamb="1"].ativo {
   transform: rotate(45deg);
@@ -151,7 +146,6 @@ div.conta {
   top: 0px;
 }
 
-
 .themas {
   position: absolute;
   left: 0;
@@ -163,8 +157,7 @@ div.conta {
   transform: translate(-100%);
 
   background-color: rgb(208, 109, 130);
-  transition: all .5s;
-
+  transition: all 0.5s;
 }
 
 .themas.ativo {
@@ -192,14 +185,12 @@ ul li:nth-child(4) {
   background: linear-gradient(to right, #b8e994, #78e08f, #079992);
 }
 
-
 ul p {
   padding: 10px 30px;
   color: #fff;
-  font-family: 'IBM Plex Mono';
+  font-family: "IBM Plex Mono";
   font-size: 1.5rem;
 }
-
 
 /* RESPONSIVIDADE */
 
@@ -215,7 +206,23 @@ ul p {
   .calculadora {
     width: 100vw;
     background-color: rgb(208, 109, 130);
-    
+    height: calc(100vh - 130px);
+
     padding: 30px 30px 40px;
+  }
+
+  .row .digit-number {
+    padding: 20px;
+  }
+}
+
+/* ANIMATIONS */
+
+@keyframes click {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.9);
   }
 }

@@ -17,8 +17,16 @@ const Display = {
     writeValues(value) {
         Format.formatValues(value)
     },
+
     clearAll() {
+        Controls.existPoint = false;
         displayCalc.value = '';
+    },
+
+    animationOnClick({ target }) {
+        document.querySelectorAll('.digit-number')
+            .forEach(item => item.classList.remove('click'))
+        target.classList.add('click')
     }
 }
 
@@ -27,7 +35,17 @@ const Calcs = {
         const account = displayCalc.value.trim();
         const condition = account.match(/^[+*./]/g) !== null || account.match(/[-+*./]$/g) !== null
 
-        condition ? displayCalc.value = displayCalc.value : displayCalc.value = eval(account)
+        console.log(eval(account))
+        // if (displayCalc.value.length)
+        if (condition) {
+            displayCalc.value = displayCalc.value
+        } else {
+            const conta = String(eval(account))
+            const condition = conta.indexOf('.') === -1;
+
+            condition ? displayCalc.value = eval(account) : displayCalc.value = eval(account).toFixed(1)
+        }
+
     }
 }
 
@@ -52,28 +70,31 @@ const Format = {
                 break
             default:
                 if (key.match(/\d/g)) displayCalc.value += key;
-                Controls.existPoint = false;
                 break;
         }
     },
 
     formatSignal(signal) {
-        if (Controls.existPoint == false) {
-            const value = displayCalc.value.trim().slice(-1)
+        Controls.existPoint = false;
 
-            if (value == '+' || value == '-' || value == '/' || value == '*') {
-                displayCalc.value = `${displayCalc.value.slice(0, -3)} ${signal} `
-            } else {
-                displayCalc.value += ` ${signal} `
-            }
+        const value = displayCalc.value.trim().slice(-1)
+
+        if (value == '+' || value == '-' || value == '/' || value == '*') {
+            displayCalc.value = `${displayCalc.value.slice(0, -3)} ${signal} `
+        } else {
+            displayCalc.value += ` ${signal} `
         }
+    
     },
 
     formatPoint(key) {
+        const value = displayCalc.value.split(/[*+-.\/]/g)
+        
         if (!Controls.existPoint) {
-            displayCalc.value += key;
-            Controls.existPoint = true
+           displayCalc.value += key;
+           Controls.existPoint = true;
         }
+
     }
 
 }
@@ -236,8 +257,12 @@ const App = {
         StorageLocal.get();
         
         document.addEventListener('keyup', Display.getValueFromKeyUp)
+        
         document.querySelectorAll('.theme')
             .forEach(thema => thema.addEventListener('click', Menu.chooseThema))
+    
+        document.querySelectorAll('.digit-number')
+            .forEach(item => item.addEventListener('click', Display.animationOnClick))
     }
 }
 
