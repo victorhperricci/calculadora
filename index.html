@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Online</title>
+    <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+
+<body>
+    <form action="">
+        <div class="calculadora">
+            <div class="display">
+                <input type="text" class="display-numbers"></input>
+            </div>
+            <div class="digit">
+
+                <div class="row">
+                    <div class="digit-number conta cancel" onclick="Display.clearAll()">C</div>
+                    <div class="digit-number conta more" onclick="Display.getValueFromClick('+')">+</div>
+                </div>  
+
+                <div class="row">
+                    <div class="digit-number" data-number onclick="Display.getValueFromClick('1')">1</div>
+                    <div class="digit-number" data-number onclick="Display.getValueFromClick('2')">2</div>
+                    <div class="digit-number" data-number onclick="Display.getValueFromClick('3')">3</div>
+                    <div class="digit-number conta" onclick="Display.getValueFromClick('-')">-</div>
+                </div>
+
+                <div class="row">
+                    <div class="digit-number" data-number onclick="Display.getValueFromClick('4')">4</div>
+                    <div class="digit-number" data-number onclick="Display.getValueFromClick('5')">5</div>
+                    <div class="digit-number" data-number onclick="Display.getValueFromClick('6')">6</div>
+                    <div class="digit-number conta" onclick="Display.getValueFromClick('*')">*</div>
+                </div>
+
+                <div class="row">
+                    <div class="digit-number" data-number onclick="Display.getValueFromClick('7')">7</div>
+                    <div class="digit-number" data-number onclick="Display.getValueFromClick('8')">8</div>
+                    <div class="digit-number" data-number onclick="Display.getValueFromClick('9')">9</div>
+                    <div class="digit-number conta" onclick="Display.getValueFromClick('/')">÷</div>
+                </div>
+
+                <div class="row">
+                    <div class="digit-number conta" onclick="Display.getValueFromClick('.')">.</div>
+                    <div class="digit-number" data-number onclick="Display.getValueFromClick('0')">0</div>
+                    <div class="digit-number conta" data-account="result" onclick="Calcs.resultAccount()">=</div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <div class="hamburguer" onclick="Menu.start()">
+        <div data-hamb="1"></div>
+        <div data-hamb="2"></div>
+        <div data-hamb="3"></div>
+    </div>
+
+    <div class="themas-dad">
+        <ul class="themas">
+            <p>Escolha um Tema</p>
+            <li class="theme" data-thema="thema1">1</li>
+            <li class="theme" data-thema="thema2">2</li>
+            <li class="theme" data-thema="thema3">3</li>
+        </ul>
+    </div>
+
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
