@@ -25,7 +25,7 @@ const Display = {
 const Calcs = {
     resultAccount() {
         const account = displayCalc.value.trim();
-        const condition = account.match(/^[-+*./]/g) !== null || account.match(/[-+*./]$/g) !== null
+        const condition = account.match(/^[+*./]/g) !== null || account.match(/[-+*./]$/g) !== null
 
         condition ? displayCalc.value = displayCalc.value : displayCalc.value = eval(account)
     }
