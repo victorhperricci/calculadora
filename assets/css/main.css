@@ -206,7 +206,7 @@ ul p {
   .calculadora {
     width: 100vw;
     background-color: rgb(208, 109, 130);
-    height: calc(100vh - 130px);
+    height: auto;
 
     padding: 30px 30px 40px;
   }
