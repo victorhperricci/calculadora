@@ -93,16 +93,12 @@ const Format = {
   formatSignal(signal) {
     Controls.existPoint = false;
     const value = displayCalc.value.trim().slice(-1);
+    this.elementResult.classList.remove("result");
 
-    if (this.elementResult.classList.contains("result")) {
-      displayCalc.value = signal;
-      this.elementResult.classList.remove("result");
+    if (value == "+" || value == "-" || value == "/" || value == "*") {
+      displayCalc.value = `${displayCalc.value.slice(0, -3)} ${signal} `;
     } else {
-      if (value == "+" || value == "-" || value == "/" || value == "*") {
-        displayCalc.value = `${displayCalc.value.slice(0, -3)} ${signal} `;
-      } else {
-        displayCalc.value += ` ${signal} `;
-      }
+      displayCalc.value += ` ${signal} `;
     }
   },
 
